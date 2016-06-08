@@ -18,12 +18,12 @@ int main()
   double CSedge = 0.0, COedge = 0.0;//keVee
   const double eRestMass = 511;//keV
   double neutron_keVee = 0.0;//kevee
-  double x = 0.0;//MeV 
+  double x = 0.0;//MeV
 
   //Calculates Compton Edge for 137Cs and 60Co
   CSedge = CSenergy-(CSenergy/(1+(2*CSenergy/eRestMass)));
   COedge = COenergy-(COenergy/(1+(2*COenergy/eRestMass)));
-  
+
   //Captures user input for variables
   cout << "Enter maximum neutron energy(MeV): " << endl;
   cin >> maxNeutronEnergy;
@@ -33,14 +33,14 @@ int main()
   //Calculates neutron keVee using Madey's/Cecil's(derived from Birk's) formula
   x = (0.95*maxNeutronEnergy)-(8.0*(1-exp(-0.1*pow(maxNeutronEnergy,0.9))));
   neutron_keVee = x*1000;
-  
+
   //Calculates where to put gamma edges
   CSchannel = CSedge * (maxChannel/neutron_keVee);
   COchannel = COedge * (maxChannel/neutron_keVee);
-  
+
   //Outputs where to place compton edge:
   cout << "Place Compton edge here in QDC spectrum: " << endl;
   cout << "137Cs in channel " << CSchannel << ", 60Co in channel " << COchannel << endl;
-
+  cout << "keVee/Ch = " << CSedge/CSchannel << endl;
   return 0;
 }
